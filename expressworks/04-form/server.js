@@ -1,5 +1,6 @@
 'use strict';
 
+const port = parseInt(process.argv[2]);
 const bodyParser = require('body-parser');
 const express = require('express');
 const pug = require('pug');
@@ -10,13 +11,11 @@ const compiledIndex = pug.compileFile('template/index.pug');
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', function(req, res){
-  // console.log('in get');
   res.end(compiledIndex());
 });
 
 
 app.post('/form', function(req, res){
-  // console.log(rletbody);
   let reversed = '';
   for (let i = req.body.str.length - 1; i >= 0; i--) {
     reversed += req.body.str[i];
@@ -25,4 +24,4 @@ app.post('/form', function(req, res){
   res.end(reversed);
 });
 
-app.listen(parseInt(process.argv[2]));
+app.listen(port);
