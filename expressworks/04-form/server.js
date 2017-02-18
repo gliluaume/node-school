@@ -14,7 +14,6 @@ app.get('/', function(req, res){
   res.end(compiledIndex());
 });
 
-
 app.post('/form', function(req, res){
   let reversed = '';
   for (let i = req.body.str.length - 1; i >= 0; i--) {
